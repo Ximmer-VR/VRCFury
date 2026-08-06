@@ -33,7 +33,7 @@ namespace VF.Feature {
 
         private VFCondition isOn;
         private VFAParam exclusiveParam;
-        private Action<VFState, bool> drive;
+        public Action<VFState, bool> drive;
         private VFClip savedRestingClip;
         private bool loadedRestingClip = false;
 
@@ -54,14 +54,14 @@ namespace VF.Feature {
             if (model.enableExclusiveTag) {
                 return SeparateList(model.exclusiveTag);
             }
-            return new HashSet<string>(); 
+            return new HashSet<string>();
         }
 
         private ISet<string> GetDriveGlobalParams() {
             if (model.enableDriveGlobalParam) {
                 return SeparateList(model.driveGlobalParam);
             }
-            return new HashSet<string>(); 
+            return new HashSet<string>();
         }
 
         private (string,bool) GetParamName() {
@@ -139,7 +139,7 @@ namespace VF.Feature {
                     }
                 }
             }
-            
+
             this.isOn = onCase;
 
             var layerName = model.name;
@@ -428,7 +428,7 @@ namespace VF.Feature {
                 .OnClick(() => {
                     var advMenu = new GenericMenu();
                     var pos = Event.current.mousePosition;
-                    
+
                     advMenu.AddItem(new GUIContent("Select Menu Folder"), false, () => {
                         MoveMenuItemBuilder.SelectButton(
                             avatarObject,
@@ -462,12 +462,12 @@ namespace VF.Feature {
                             invertRestLogicProp.boolValue = false;
                             prop.serializedObject.ApplyModifiedProperties();
                         });
-                        
+
                         advMenu.AddItem(new GUIContent("Run Animation to Completion"), hasExitTimeProp.boolValue, () => {
                             hasExitTimeProp.boolValue = !hasExitTimeProp.boolValue;
                             prop.serializedObject.ApplyModifiedProperties();
                         });
-                        
+
                         advMenu.AddItem(new GUIContent("Hold Button"), holdButtonProp.boolValue, () => {
                             holdButtonProp.boolValue = !holdButtonProp.boolValue;
                             prop.serializedObject.ApplyModifiedProperties();
@@ -598,7 +598,7 @@ namespace VF.Feature {
                 } else {
                     c = remoteSingle;
                 }
-                
+
                 var output = new VisualElement();
                 if (sliderProp.boolValue) {
                     var sliderOptions = new VisualElement();
@@ -712,5 +712,3 @@ namespace VF.Feature {
     }
 
 }
-
-
